@@ -5,6 +5,17 @@ var app = express()
 // we can enable it using nodemon
 // we are using express to pass a static file. In this case, the entire directory using __dirname
 app.use(express.static(__dirname))
+
+var messages = [
+    {name: "Bob", message: "nope"},
+    {name: "Itza", message: "still nope"}
+]
+
+app.get('/messages', (req, res) => {
+    res.send(messages)
+})
+
+
 var server = app.listen(3000, () => {
     console.log('server is listening on port', server.address().port)
 })
